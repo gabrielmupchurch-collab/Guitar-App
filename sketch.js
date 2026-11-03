@@ -1,7 +1,7 @@
 let GuitarNeck;
 
 async function setup() {
-  createCanvas(400, 400);
+  createCanvas(400, 900);
   GuitarNeck = await loadImage("Images/guitar-neck.png")
 }
 
