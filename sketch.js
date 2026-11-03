@@ -1,29 +1,66 @@
 let GuitarNeck;
+let lowESound;
 // Each string's vertical position and drawing thickness, ordered from top to bottom.
 const stringYs = [150, 211, 272, 333, 394, 455];
 const stringWeights = [8, 6, 5, 4, 3, 2];
+const stringPitchSemitones = [0, 5, 10, 15, 19, 24];
 // Horizontal positions of the nut and frets; string bends can only be grabbed between them.
 const fretPositions = [50, 190, 320, 435, 545, 650, 745, 840];
 // Index of the string being dragged, or -1 when no string is grabbed.
 let grabbedString = -1;
 
+function fretAtX(x) {
+  if (x < fretPositions[0]) {
+    return 0;
+  }
+
+  for (let fretWire = 1; fretWire < fretPositions.length; fretWire++) {
+    if (x < fretPositions[fretWire]) {
+      return fretWire;
+    }
+  }
+
+  return fretPositions.length;
+}
+
 async function setup() {
   createCanvas(900, 600);
   textSize(20);
-  GuitarNeck = await loadImage("Images/guitar-neck.png")
+  GuitarNeck = await loadImage("Images/guitar-neck.png");
+  lowESound = new Audio("Audio/Low E String On Acoustic Guitar Sound Effect.mp3");
+  lowESound.preload = "auto";
+  lowESound.preservesPitch = false;
+  lowESound.mozPreservesPitch = false;
+  lowESound.webkitPreservesPitch = false;
 }
 
 function mousePressed() {
-  // Only start a drag when the click is over a string and within the fretboard.
-  const isBetweenFrets = mouseX > fretPositions[0] && mouseX < fretPositions[fretPositions.length - 1];
   const nearestString = Math.round((mouseY - stringYs[0]) / 61);
-
-  if (
-    isBetweenFrets &&
+  const isOnString =
+    mouseX >= 0 &&
+    mouseX <= width &&
     nearestString >= 0 &&
     nearestString < stringYs.length &&
-    Math.abs(mouseY - stringYs[nearestString]) <= 30.5
-  ) {
+    Math.abs(mouseY - stringYs[nearestString]) <= 30.5;
+
+  if (!isOnString) {
+    return;
+  }
+
+  const fret = fretAtX(mouseX);
+  lowESound.pause();
+  lowESound.currentTime = 0;
+  lowESound.playbackRate = Math.pow(
+    2,
+    (stringPitchSemitones[nearestString] + fret) / 12
+  );
+  const playback = lowESound.play();
+  if (playback) {
+    playback.catch((error) => console.error("Could not play the guitar string sound:", error));
+  }
+
+  const isBetweenFrets = mouseX > fretPositions[0] && mouseX < fretPositions[fretPositions.length - 1];
+  if (isBetweenFrets) {
     grabbedString = nearestString;
   }
 }
