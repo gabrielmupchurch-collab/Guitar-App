@@ -18,12 +18,12 @@ function draw() {
     pop();
   //strings -- start at 150, 61px between each string
     rectMode(CENTER);
-    rect(450,150,900,8);
-    rect(450,211,900,6);
-    rect(450,272,900,5);
-    rect(450,333,900,4);
-    rect(450,394,900,3);
-    rect(450,455,900,2);
+    rect(450,150,900,2);
+    rect(450,211,900,3);
+    rect(450,272,900,4);
+    rect(450,333,900,5);
+    rect(450,394,900,6);
+    rect(450,455,900,7);
 
 }
 //nutx=50
