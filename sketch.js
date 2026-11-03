@@ -13,7 +13,7 @@ function draw() {
   translate(width / 2, height / 2); 
 
   // 3. Rotate by 90 degrees (HALF_PI radians)
-  rotate(HALF_PI); 
+  rotate(-HALF_PI); 
 
   // 4. Change image mode to CENTER so it draws relative to its own middle
   imageMode(CENTER); 
