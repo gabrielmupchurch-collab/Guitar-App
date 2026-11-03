@@ -7,5 +7,5 @@ async function setup() {
 
 function draw() {
   background(220);
-  image(GuitarNeck, 0, 0);
+  image(GuitarNeck, 0, 0,400,900,);
 }
