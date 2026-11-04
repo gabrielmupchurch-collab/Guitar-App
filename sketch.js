@@ -122,6 +122,7 @@ function draw() {
   // Draw every string; split the grabbed string at the pointer to visualize its bend.
     for (let i = 0; i < stringYs.length; i++) {
       strokeWeight(stringWeights[i]);
+      stroke(23,25,58)
       if (mouseIsPressed && i === grabbedString) {
         // Keep the bend within the neighboring strings so it cannot cross them.
         const minY = i === 0 ? stringYs[i] - 61 : stringYs[i - 1];
