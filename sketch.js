@@ -36,7 +36,7 @@ async function setup() {
   textSize(20);
   // Load the neck image before drawing, and use the low E sample as the source for every string.
   GuitarNeck = await loadImage("Images/guitar-neck.png");
-  GuitarNUt = await loadImage("Images/GuitarNut.PNG");
+  GuitarNut = await loadImage("Images/GuitarNut.PNG");
   lowESound = new Audio("Audio/Low E String On Acoustic Guitar Sound Effect.mp3");
   lowESound.preload = "auto";
   // Playback-rate changes must also change pitch, rather than preserving the sample's original pitch.
@@ -116,7 +116,7 @@ function draw() {
     rotate(-HALF_PI); 
     imageMode(CENTER); 
     image(GuitarNeck, 0, 0,350,900,);
-    image(GuitarNut, 0,0,350,233,); 
+    image(GuitarNut, -5,-422,370,227,); 
     pop();
   // Draw every string; split the grabbed string at the pointer to visualize its bend.
     for (let i = 0; i < stringYs.length; i++) {
