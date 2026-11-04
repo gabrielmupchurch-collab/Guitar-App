@@ -108,7 +108,7 @@ function draw() {
     lowESound.playbackRate += (targetPlaybackRate - lowESound.playbackRate) * smoothing;
   }
 
-  background(160,165,175);
+  background(140,170,190);
   //load logo image in the top center
   image(Logo, 300,-40,300,200)
   // Rotate the vertical neck image so its frets and string paths appear horizontal.
