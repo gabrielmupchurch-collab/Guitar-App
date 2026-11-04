@@ -33,7 +33,6 @@ function fretAtX(x) {
 
 async function setup() {
   createCanvas(900, 600);
-  textSize(20);
   // Load the neck image before drawing, and use the low E sample as the source for every string.
   GuitarNeck = await loadImage("Images/guitar-neck.png");
   GuitarNut = await loadImage("Images/GuitarNut.PNG");
@@ -108,8 +107,7 @@ function draw() {
     lowESound.playbackRate += (targetPlaybackRate - lowESound.playbackRate) * smoothing;
   }
 
-  background(220);
-  text("X: " + mouseX + "  Y: " + mouseY, 10, 30);
+  background(160,165,175);
   // Rotate the vertical neck image so its frets and string paths appear horizontal.
     push(); 
     translate(width / 2, height / 2); 
