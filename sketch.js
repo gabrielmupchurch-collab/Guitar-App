@@ -115,8 +115,8 @@ function draw() {
     translate(width / 2, height / 2); 
     rotate(-HALF_PI); 
     imageMode(CENTER); 
-    image(GuitarNeck, 0, 0,350,900,)
-    image(GuitarNut, 0,-20,350,233); 
+    image(GuitarNeck, 0, 0,350,900,);
+    image(GuitarNut, 0,0,350,233,); 
     pop();
   // Draw every string; split the grabbed string at the pointer to visualize its bend.
     for (let i = 0; i < stringYs.length; i++) {
